@@ -17,7 +17,7 @@ const galleryItems = [
       preview:
         'https://cdn.pixabay.com/photo/2019/05/16/09/47/beach-4206785__340.jpg',
       original:
-        'https://cdn.pixabay.com/photo/2019/05/16/09/47/beach-4206785_1280.jpg',
+        'https://cdn.pixabay.com/photo/2019/05/16/09/47/beach-4206785__340.jpg',
       description: 'Aerial Beach View',
     },
     {
@@ -64,4 +64,41 @@ const galleryItems = [
     },
   ];
   
+
+  const gallery = document.querySelector('.js-gallery');
+  const lightbox = document.querySelector('.js-lightbox');
+  const lightboxImage = document.querySelector('.lightbox__image');
+  const closeBtn = document.querySelector('[data-action="close-lightbox"]');
+  const overlay = document.querySelector('.lightbox__overlay');
+  
+
+  gallery.addEventListener('click', (event) => {
+    event.preventDefault();
+    
+    const img = event.target;
+    if (img.nodeName !== 'IMG') return;
+  
+    const largeImageURL = img.dataset.source;
+    lightboxImage.src = largeImageURL;
+    lightbox.classList.add('is-open');
+  });
+  
+ 
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', closeModal);
+  
+  function closeModal() {
+    lightbox.classList.remove('is-open');
+    lightboxImage.src = '';
+
+
+closeBtn.addEventListener('click', closeModal);
+overlay.addEventListener('click', closeModal);
+
+function closeModal() {
+  lightbox.classList.remove('is-open');
+  lightboxImage.src = '';
+}
+  }
+
   
